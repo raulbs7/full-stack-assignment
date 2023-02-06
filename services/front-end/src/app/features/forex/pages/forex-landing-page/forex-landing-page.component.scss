@@ -1,0 +1,42 @@
+@use "theme";
+
+.forexPage {
+  margin-top: var(--space-large);
+  display: block;
+  padding: var(--space-large);
+}
+
+.forex__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.forex__body {
+  display: block;
+  table {
+    width: 100%;
+  }
+}
+
+.forex__title {
+  float: left;
+}
+
+.forex__currenciesTitle {
+  h1 {
+    @include theme.font-h1();
+  }
+}
+
+.forex__cardDivider {
+  padding-top: var(--space-small);
+}
+
+@media screen and (max-width: 400px) {
+  .forex__title {
+    float: none;
+    margin-right: 0;
+    width: auto;
+    border: 0;
+  }
+}

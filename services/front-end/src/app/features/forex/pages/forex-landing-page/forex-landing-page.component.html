@@ -1,0 +1,27 @@
+<div class="forexPage" *transloco="let t; read: 'forex.forexPage'">
+  <div class="forex__header">
+    <div class="forex__title">
+      <div class="forex__currenciesTitle">
+        <h1>{{ t("title") }}</h1>
+      </div>
+    </div>
+    <app-subscription></app-subscription>
+  </div>
+  <div class="forex__body">
+    <mat-card
+      class="forex__cardBody"
+      *ngIf="(currencies$ | async)?.length != 0"
+    >
+      <mat-card-content
+        *ngFor="let currency of currencies$ | async; let i = index"
+      >
+        <div>
+          <mat-divider class="forex__cardDivider" *ngIf="i != 0"></mat-divider>
+          <app-subscribed-currency
+            [currency]="currency"
+          ></app-subscribed-currency>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+{
+  "forexPage": {
+    "title": "Divisas",
+    "subscribedCurrency": {
+      "following": "Siguiendo",
+      "low": "Bajo",
+      "high": "Alto",
+      "yesterday": "Ayer",
+      "unsubscribe": "Eliminar"
+    },
+    "subscription": {
+      "enterCurrency": "Introduce divisa",
+      "subscribe": "Subscribirse"
+    }
+  }
+}

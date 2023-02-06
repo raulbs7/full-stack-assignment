@@ -1,0 +1,43 @@
+@use "theme";
+
+.forex__subscribedCurrency {
+  display: flex;
+  padding-top: var(--space-xsmall);
+  justify-content: space-between;
+  i {
+    font-size: var(--font-size-small);
+  }
+}
+
+.forex__boxValues {
+  display: block;
+  padding: var(--space-xsmall);
+}
+
+.forex__yesterdayCurrency {
+  display: flex;
+  background-color: var(--color-neutral-variant-2);
+  border-radius: var(--space-xsmall);
+  b {
+    color: var(--color-primary);
+  }
+}
+
+.forex__principalText {
+  display: flex;
+  justify-content: center;
+  b {
+    @include theme.font-bold();
+  }
+}
+
+.forex__secondaryText {
+  display: flex;
+  justify-content: center;
+}
+
+.forex__yesterdayTitle {
+  position: absolute;
+  margin-top: -14px;
+  padding-left: var(--space-medium);
+}

@@ -1,0 +1,14 @@
+@use "theme";
+@use "variables";
+
+.forex__formSubscribe {
+  display: flex;
+}
+
+.forex__searchCurrency {
+  padding-left: var(--space-medium);
+}
+
+.forex__buttonSubscribe {
+  padding-left: var(--space-medium);
+}

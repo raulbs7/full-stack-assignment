@@ -1,0 +1,62 @@
+<div
+  class="forex__subscribedCurrency"
+  *transloco="let t; read: 'forex.forexPage.subscribedCurrency'"
+>
+  <div class="forex__boxValues">
+    <div class="forex__principalText">
+      <b>{{ currency._code }}/EUR</b>
+    </div>
+    <div class="forex__secondaryText">
+      <i>{{ t("following") }}</i>
+    </div>
+  </div>
+
+  <div class="forex__boxValues">
+    <div class="forex__principalText">
+      <b>1.008</b>
+    </div>
+    <div class="forex__secondaryText">
+      <i>{{ t("low") }}</i>
+    </div>
+  </div>
+
+  <div class="forex__boxValues">
+    <div class="forex__principalText">
+      <b>1.00854</b>
+    </div>
+    <div class="forex__secondaryText">
+      <i>{{ t("high") }}</i>
+    </div>
+  </div>
+
+  <div class="forex__yesterdayCurrency">
+    <div class="forex__yesterdayTitle">
+      <b>{{ t("yesterday") }}</b>
+      <fa-icon [icon]="['fas', 'caret-up']"></fa-icon>
+    </div>
+    <div class="forex__boxValues">
+      <div class="forex__principalText">
+        <b>1.008</b>
+      </div>
+      <div class="forex__secondaryText">
+        <i>{{ t("low") }}</i>
+      </div>
+    </div>
+
+    <div class="forex__boxValues">
+      <div class="forex__principalText">
+        <b>1.00854</b>
+      </div>
+      <div class="forex__secondaryText">
+        <i>{{ t("high") }}</i>
+      </div>
+    </div>
+  </div>
+
+  <div class="forex__boxValues">
+    <button mat-raised-button color="warn" (click)="unsubscribeCurrency()">
+      <fa-icon [icon]="['fas', 'minus-circle']"></fa-icon>
+      {{ t("unsubscribe") }}
+    </button>
+  </div>
+</div>

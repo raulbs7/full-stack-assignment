@@ -1,0 +1,27 @@
+<div
+  class="forex__subscribe"
+  *transloco="let t; read: 'forex.forexPage.subscription'"
+>
+  <form class="forex__formSubscribe">
+    <mat-form-field class="forex__searchCurrency">
+      <input
+        type="text"
+        placeholder="{{ t('enterCurrency') }}"
+        matInput
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div class="forex__buttonSubscribe">
+      <button mat-raised-button color="primary" (click)="subscribeCurrency()">
+        <fa-icon [icon]="['fas', 'plus-circle']"></fa-icon>
+        {{ t("subscribe") }}
+      </button>
+    </div>
+  </form>
+</div>

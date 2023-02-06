@@ -1,0 +1,16 @@
+{
+  "forexPage": {
+    "title": "Currencies",
+    "subscribedCurrency": {
+      "following": "Following",
+      "low": "Low",
+      "high": "High",
+      "yesterday": "Yesterday",
+      "unsubscribe": "Unsubscribe"
+    },
+    "subscription": {
+      "enterCurrency": "Enter currency",
+      "subscribe": "Subscribe"
+    }
+  }
+}
