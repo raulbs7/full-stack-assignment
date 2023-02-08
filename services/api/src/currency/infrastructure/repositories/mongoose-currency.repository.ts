@@ -32,20 +32,12 @@ export class MongooseCurrencyRepository implements ICurrencyRepository {
   }
 
   async findByCode(code: string): Promise<Nullable<Currency>> {
-    const currency = await CurrencySchema.findOne(
-      { code: code },
-      {},
-      { sort: { created_at: -1 } }
-    );
+    const currency = await CurrencySchema.findOne({ code: code });
     return currency === null ? null : this.toDomain(currency);
   }
 
-  async unsubscribe(currency: Currency): Promise<void> {
+  async changeSubscription(currency: Currency): Promise<void> {
     const document = this.fromDomain(currency);
-    await CurrencySchema.updateOne(
-      { _id: currency.id },
-      { $set: document },
-      { upsert: true }
-    );
+    await CurrencySchema.updateOne({ _id: currency.id }, { $set: document });
   }
 }

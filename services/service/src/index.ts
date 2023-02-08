@@ -1,9 +1,6 @@
 import * as path from "path";
 import * as mongoose from "mongoose";
 import { retrieveData } from "./retrieveData";
-import axios from "axios";
-var url =
-  "https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=EUR&to_symbol=USD&apikey=demo";
 
 // [DB Connection]
 
@@ -31,8 +28,5 @@ async function connectToDatabase(connectionUri: string) {
 connectToDatabase(MONGODB_URI);
 
 // [Script execution]
-const retrievedData = retrieveData();
-console.debug(retrievedData);
-
+retrieveData();
 console.log("Executing service...");
-process.exit(0);

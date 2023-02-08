@@ -14,8 +14,7 @@
     "clean": "rm -f dist/bundle.js",
     "prestart": "npm run clean",
     "start": "NODE_ENV=development webpack --config webpack.config.cjs",
-    "poststart": "webpack --config webpack.dev.cjs",
-    "test": "jest --coverage"
+    "poststart": "webpack --config webpack.dev.cjs"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -39,11 +38,5 @@
     "webpack-merge": "^5.8.0",
     "webpack-node-externals": "^3.0.0",
     "webpack-shell-plugin-next": "^2.2.2"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ]
   }
 }

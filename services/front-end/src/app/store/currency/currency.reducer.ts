@@ -14,11 +14,9 @@ export const currencyReducer = createReducer(
     state.filter((item) => item._code !== code)
   ),
   on(addCurrency, (state, { currency }) => {
-    console.log(state);
     return [...state, currency];
   }),
   on(getCurrencyList, (state, { currencies }) => {
-    console.log(currencies);
     return currencies;
   })
 );

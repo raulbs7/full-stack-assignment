@@ -13,7 +13,12 @@
 
   <div class="forex__boxValues">
     <div class="forex__principalText">
-      <b>1.008</b>
+      <b *ngIf="historyNow == undefined; else historyNowLow">
+        No data
+      </b>
+      <ng-template #historyNowLow>
+        <b>{{ historyNow._low }}</b>
+      </ng-template>
     </div>
     <div class="forex__secondaryText">
       <i>{{ t("low") }}</i>
@@ -22,7 +27,12 @@
 
   <div class="forex__boxValues">
     <div class="forex__principalText">
-      <b>1.00854</b>
+      <b *ngIf="historyNow == undefined; else historyNowHigh">
+        No data
+      </b>
+      <ng-template #historyNowHigh>
+        <b>{{ historyNow._high }}</b>
+      </ng-template>
     </div>
     <div class="forex__secondaryText">
       <i>{{ t("high") }}</i>
@@ -32,11 +42,19 @@
   <div class="forex__yesterdayCurrency">
     <div class="forex__yesterdayTitle">
       <b>{{ t("yesterday") }}</b>
-      <fa-icon [icon]="['fas', 'caret-up']"></fa-icon>
+      <fa-icon *ngIf="currencyToUp; else defaultIcon" [icon]="['fas', 'caret-up']"></fa-icon>
+      <ng-template #defaultIcon>
+          <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
+      </ng-template>
     </div>
     <div class="forex__boxValues">
       <div class="forex__principalText">
-        <b>1.008</b>
+        <b *ngIf="historyYesterday == undefined; else historyYesterdayLow">
+          No data
+        </b>
+        <ng-template #historyYesterdayLow>
+          <b>{{ historyYesterday._low }}</b>
+        </ng-template>
       </div>
       <div class="forex__secondaryText">
         <i>{{ t("low") }}</i>
@@ -45,7 +63,12 @@
 
     <div class="forex__boxValues">
       <div class="forex__principalText">
-        <b>1.00854</b>
+        <b *ngIf="historyYesterday == undefined; else historyYesterdayHigh">
+          No data
+        </b>
+        <ng-template #historyYesterdayHigh>
+          <b>{{ historyYesterday._high }}</b>
+        </ng-template>
       </div>
       <div class="forex__secondaryText">
         <i>{{ t("high") }}</i>

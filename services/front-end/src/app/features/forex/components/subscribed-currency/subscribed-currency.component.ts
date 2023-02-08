@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   Input,
   OnInit,
@@ -21,11 +22,13 @@ export class SubscribedCurrencyComponent implements OnInit {
   @Input() currency: Currency;
   historyNow: History;
   historyYesterday: History;
+  currencyToUp: boolean;
 
   constructor(
     private unsubscribeCurrencyService: UnsubscribeCurrencyService,
     private getHistoryCurrencyService: GetHistoryCurrencyService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private ref: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -46,21 +49,42 @@ export class SubscribedCurrencyComponent implements OnInit {
       .subscribe((historyData) => {
         this.historyNow = this.getHistoryNow(historyData.data);
         this.historyYesterday = this.getHistoryYesterday(historyData.data);
+        this.isCurrencyToUp();
+        this.ref.detectChanges();
       });
+  }
+
+  isCurrencyToUp() {
+    this.currencyToUp = false;
+    let meanYesterday: number;
+    let meanNow: number;
+    if (this.historyNow != undefined && this.historyYesterday != undefined) {
+      meanYesterday =
+        (this.historyYesterday._high + this.historyYesterday._low) / 2;
+      meanNow = (this.historyNow._high + this.historyNow._low) / 2;
+
+      if (meanNow >= meanYesterday) {
+        this.currencyToUp = true;
+      }
+    }
   }
 
   private getHistoryYesterday(histories: History[]): History {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     const history: History = histories.find(
-      (item: History) => item._date.toISOString() == yesterday.toISOString()
+      (item: History) =>
+        new Date(item._date).toISOString().split("T")[0] ==
+        yesterday.toISOString().split("T")[0]
     );
     return history;
   }
 
   private getHistoryNow(histories: History[]): History {
     const history: History = histories.find(
-      (item: History) => item._date.toISOString() == new Date().toISOString()
+      (item: History) =>
+        new Date(item._date).toISOString().split("T")[0] ==
+        new Date().toISOString().split("T")[0]
     );
     return history;
   }

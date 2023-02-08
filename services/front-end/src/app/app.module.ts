@@ -23,6 +23,7 @@ import {
   FontAwesomeModule,
 } from "@fortawesome/angular-fontawesome";
 import {
+  faCaretDown,
   faCaretUp,
   faMinusCircle,
   faPlusCircle,
@@ -63,6 +64,6 @@ registerLocaleData(localeEn, "en");
 })
 export class AppModule {
   constructor(private library: FaIconLibrary) {
-    library.addIcons(faCaretUp, faMinusCircle, faPlusCircle);
+    library.addIcons(faCaretUp, faCaretDown, faMinusCircle, faPlusCircle);
   }
 }
